@@ -1,0 +1,18 @@
+{
+    "viewportWidth": 1200,
+    "viewportHeight": 800,
+    "defaultCommandTimeout": 10000,
+    "testFiles": "**/*.feature",
+    "baseUrl": "http://localhost:3000/api/",
+    "video": false ,
+    "env": {
+        "db": {
+            "user": "username",
+            "password": "pass",
+            "connectString" : "host-name"
+        },
+        "allureResultsPath": "allure-results",
+        "tmsPrefix": "https://url-to-bug-tracking-system/task-",
+        "issuePrefix": "https://url-to-tms/tests/caseId-"
+      }
+}
