@@ -1,11 +1,7 @@
 ### GetToken
 POST http://localhost:3000/api/auth/token
 Content-Type: application/json
-
-{
-    "username": "david.jeremias@platformbuilder.io",
-    "password": "415782"
-}
+Authorization: Basic ZGF2aWQuamVyZW1pYXNAcGxhdGZvcm1idWlsZGVyLmlvOjQxNTc4Mg==
 
 
 ### Created

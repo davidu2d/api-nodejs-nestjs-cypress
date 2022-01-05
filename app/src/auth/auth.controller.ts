@@ -1,4 +1,4 @@
-import { Controller, Post, UseGuards, Request, Get } from '@nestjs/common';
+import { Controller, Post, UseGuards, Request, Get, Headers } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
@@ -9,10 +9,12 @@ export class AuthController {
 
     constructor(private authService: AuthService){}
 
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(AuthGuard('basic'))
     @Post('token')
-    async getAccessToken(@Request() req) {
-        return this.authService.getAccessToken(req.user);
+    async getAccessToken(@Headers('Authorization') basic: string) {
+        const user = this.authService.decodeUsernameAndPassword(basic);
+        console.log(user);
+        return this.authService.getAccessToken(user);
     }
 
     @UseGuards(AuthGuard('jwt'))

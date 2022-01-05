@@ -25,4 +25,15 @@ export class AuthService {
         access_token: this.jwtService.sign(payload),
       };
     }
+
+    async decodeUsernameAndPassword(headerBasicEncode: string) {
+      const userEncode = headerBasicEncode.split(" ");
+      let userDecode = userEncode[1];
+      let user = {}
+      if (userDecode) {
+        let temp = atob(userDecode).split(':');
+        user = {username: temp[0], password: temp[1]}
+      }
+      return user;
+    }
 }
